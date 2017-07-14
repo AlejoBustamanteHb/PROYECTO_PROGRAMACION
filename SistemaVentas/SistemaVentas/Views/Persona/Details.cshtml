@@ -1,0 +1,75 @@
+﻿@model SistemaVentas.Models.persona
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>persona</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_persona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_persona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idpersona }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

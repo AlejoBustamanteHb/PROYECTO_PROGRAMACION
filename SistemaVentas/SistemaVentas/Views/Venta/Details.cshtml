@@ -1,0 +1,83 @@
+﻿@model SistemaVentas.Models.venta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>venta</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idcliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_comprobante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_comprobante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serie_comprobante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serie_comprobante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_comprobante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_comprobante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_venta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_venta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idventa }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

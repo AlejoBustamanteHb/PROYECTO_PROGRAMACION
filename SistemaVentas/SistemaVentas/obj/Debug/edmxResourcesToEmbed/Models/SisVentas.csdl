@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbventasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="idarticulo" />
+    </Key>
+    <Property Name="idarticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idcategoria" Type="Int32" Nullable="false" />
+    <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="categoria" Relationship="Self.fk_articulo_categoria" FromRole="articulo" ToRole="categoria" />
+    <NavigationProperty Name="detalle_ingreso" Relationship="Self.fk_detalle_ingreso_articulo" FromRole="articulo" ToRole="detalle_ingreso" />
+    <NavigationProperty Name="detalle_venta" Relationship="Self.fk_detalle_venta_articulo" FromRole="articulo" ToRole="detalle_venta" />
+  </EntityType>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="idcategoria" />
+    </Key>
+    <Property Name="idcategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="condicion" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_categoria" FromRole="categoria" ToRole="articulo" />
+  </EntityType>
+  <EntityType Name="detalle_ingreso">
+    <Key>
+      <PropertyRef Name="iddetalle_ingreso" />
+    </Key>
+    <Property Name="iddetalle_ingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idingreso" Type="Int32" Nullable="false" />
+    <Property Name="idarticulo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precio_compra" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <NavigationProperty Name="articulo" Relationship="Self.fk_detalle_ingreso_articulo" FromRole="detalle_ingreso" ToRole="articulo" />
+    <NavigationProperty Name="ingreso" Relationship="Self.fk_detalle_ingreso" FromRole="detalle_ingreso" ToRole="ingreso" />
+  </EntityType>
+  <EntityType Name="detalle_venta">
+    <Key>
+      <PropertyRef Name="iddetalle_venta" />
+    </Key>
+    <Property Name="iddetalle_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idventa" Type="Int32" Nullable="false" />
+    <Property Name="idarticulo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precio_venta" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="descuento" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <NavigationProperty Name="articulo" Relationship="Self.fk_detalle_venta_articulo" FromRole="detalle_venta" ToRole="articulo" />
+    <NavigationProperty Name="venta" Relationship="Self.fk_detalle_venta" FromRole="detalle_venta" ToRole="venta" />
+  </EntityType>
+  <EntityType Name="ingreso">
+    <Key>
+      <PropertyRef Name="idingreso" />
+    </Key>
+    <Property Name="idingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idproveedor" Type="Int32" Nullable="false" />
+    <Property Name="tipo_comprobante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="serie_comprobante" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="num_comprobante" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="impuesto" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="detalle_ingreso" Relationship="Self.fk_detalle_ingreso" FromRole="ingreso" ToRole="detalle_ingreso" />
+    <NavigationProperty Name="persona" Relationship="Self.fk_ingreso_persona" FromRole="ingreso" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idpersona" />
+    </Key>
+    <Property Name="idpersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_persona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipo_documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="num_documento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ingreso" Relationship="Self.fk_ingreso_persona" FromRole="persona" ToRole="ingreso" />
+    <NavigationProperty Name="venta" Relationship="Self.fk_venta_cliente" FromRole="persona" ToRole="venta" />
+  </EntityType>
+  <EntityType Name="venta">
+    <Key>
+      <PropertyRef Name="idventa" />
+    </Key>
+    <Property Name="idventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idcliente" Type="Int32" Nullable="false" />
+    <Property Name="tipo_comprobante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="serie_comprobante" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="num_comprobante" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="impuesto" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="total_venta" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="detalle_venta" Relationship="Self.fk_detalle_venta" FromRole="venta" ToRole="detalle_venta" />
+    <NavigationProperty Name="persona" Relationship="Self.fk_venta_cliente" FromRole="venta" ToRole="persona" />
+  </EntityType>
+  <Association Name="fk_articulo_categoria">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="idcategoria" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="idcategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_ingreso_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="detalle_ingreso" Type="Self.detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idarticulo" />
+      </Principal>
+      <Dependent Role="detalle_ingreso">
+        <PropertyRef Name="idarticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_venta_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idarticulo" />
+      </Principal>
+      <Dependent Role="detalle_venta">
+        <PropertyRef Name="idarticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_ingreso">
+    <End Role="ingreso" Type="Self.ingreso" Multiplicity="1" />
+    <End Role="detalle_ingreso" Type="Self.detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingreso">
+        <PropertyRef Name="idingreso" />
+      </Principal>
+      <Dependent Role="detalle_ingreso">
+        <PropertyRef Name="idingreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_venta">
+    <End Role="venta" Type="Self.venta" Multiplicity="1" />
+    <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta">
+        <PropertyRef Name="idventa" />
+      </Principal>
+      <Dependent Role="detalle_venta">
+        <PropertyRef Name="idventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ingreso_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="ingreso" Type="Self.ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="ingreso">
+        <PropertyRef Name="idproveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cliente">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="venta" Type="Self.venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="venta">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbventasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articulo" EntityType="Self.articulo" />
+    <EntitySet Name="categoria" EntityType="Self.categoria" />
+    <EntitySet Name="detalle_ingreso" EntityType="Self.detalle_ingreso" />
+    <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" />
+    <EntitySet Name="ingreso" EntityType="Self.ingreso" />
+    <EntitySet Name="persona" EntityType="Self.persona" />
+    <EntitySet Name="venta" EntityType="Self.venta" />
+    <AssociationSet Name="fk_articulo_categoria" Association="Self.fk_articulo_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_ingreso_articulo" Association="Self.fk_detalle_ingreso_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="detalle_ingreso" EntitySet="detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_venta_articulo" Association="Self.fk_detalle_venta_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="detalle_venta" EntitySet="detalle_venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_ingreso" Association="Self.fk_detalle_ingreso">
+      <End Role="ingreso" EntitySet="ingreso" />
+      <End Role="detalle_ingreso" EntitySet="detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_venta" Association="Self.fk_detalle_venta">
+      <End Role="venta" EntitySet="venta" />
+      <End Role="detalle_venta" EntitySet="detalle_venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ingreso_persona" Association="Self.fk_ingreso_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="ingreso" EntitySet="ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cliente" Association="Self.fk_venta_cliente">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="venta" EntitySet="venta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

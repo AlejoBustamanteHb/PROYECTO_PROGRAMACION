@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SistemaVentas.Models.ingreso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idproveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_comprobante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serie_comprobante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_comprobante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idproveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_comprobante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serie_comprobante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_comprobante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idingreso }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idingreso }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idingreso })
+        </td>
+    </tr>
+}
+
+</table>

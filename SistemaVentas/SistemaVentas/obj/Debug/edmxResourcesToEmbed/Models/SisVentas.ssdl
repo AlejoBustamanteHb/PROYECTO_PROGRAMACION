@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbventasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="idarticulo" />
+    </Key>
+    <Property Name="idarticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idcategoria" Type="int" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="512" />
+    <Property Name="imagen" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="idcategoria" />
+    </Key>
+    <Property Name="idcategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="256" />
+    <Property Name="condicion" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_ingreso">
+    <Key>
+      <PropertyRef Name="iddetalle_ingreso" />
+    </Key>
+    <Property Name="iddetalle_ingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idingreso" Type="int" Nullable="false" />
+    <Property Name="idarticulo" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_venta">
+    <Key>
+      <PropertyRef Name="iddetalle_venta" />
+    </Key>
+    <Property Name="iddetalle_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idventa" Type="int" Nullable="false" />
+    <Property Name="idarticulo" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="descuento" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ingreso">
+    <Key>
+      <PropertyRef Name="idingreso" />
+    </Key>
+    <Property Name="idingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idproveedor" Type="int" Nullable="false" />
+    <Property Name="tipo_comprobante" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="serie_comprobante" Type="varchar" MaxLength="7" />
+    <Property Name="num_comprobante" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_hora" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="impuesto" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idpersona" />
+    </Key>
+    <Property Name="idpersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo_persona" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tipo_documento" Type="varchar" MaxLength="20" />
+    <Property Name="num_documento" Type="varchar" MaxLength="15" />
+    <Property Name="direccion" Type="varchar" MaxLength="70" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="venta">
+    <Key>
+      <PropertyRef Name="idventa" />
+    </Key>
+    <Property Name="idventa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idcliente" Type="int" Nullable="false" />
+    <Property Name="tipo_comprobante" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="serie_comprobante" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="num_comprobante" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_hora" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="impuesto" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="total_venta" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_articulo_categoria">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="idcategoria" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="idcategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_ingreso">
+    <End Role="ingreso" Type="Self.ingreso" Multiplicity="1" />
+    <End Role="detalle_ingreso" Type="Self.detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingreso">
+        <PropertyRef Name="idingreso" />
+      </Principal>
+      <Dependent Role="detalle_ingreso">
+        <PropertyRef Name="idingreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_ingreso_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="detalle_ingreso" Type="Self.detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idarticulo" />
+      </Principal>
+      <Dependent Role="detalle_ingreso">
+        <PropertyRef Name="idarticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_venta">
+    <End Role="venta" Type="Self.venta" Multiplicity="1" />
+    <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta">
+        <PropertyRef Name="idventa" />
+      </Principal>
+      <Dependent Role="detalle_venta">
+        <PropertyRef Name="idventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detalle_venta_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idarticulo" />
+      </Principal>
+      <Dependent Role="detalle_venta">
+        <PropertyRef Name="idarticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ingreso_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="ingreso" Type="Self.ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="ingreso">
+        <PropertyRef Name="idproveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cliente">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="venta" Type="Self.venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="venta">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbventasModelStoreContainer">
+    <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_ingreso" EntityType="Self.detalle_ingreso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ingreso" EntityType="Self.ingreso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta" EntityType="Self.venta" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_articulo_categoria" Association="Self.fk_articulo_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_ingreso" Association="Self.fk_detalle_ingreso">
+      <End Role="ingreso" EntitySet="ingreso" />
+      <End Role="detalle_ingreso" EntitySet="detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_ingreso_articulo" Association="Self.fk_detalle_ingreso_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="detalle_ingreso" EntitySet="detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_venta" Association="Self.fk_detalle_venta">
+      <End Role="venta" EntitySet="venta" />
+      <End Role="detalle_venta" EntitySet="detalle_venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detalle_venta_articulo" Association="Self.fk_detalle_venta_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="detalle_venta" EntitySet="detalle_venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ingreso_persona" Association="Self.fk_ingreso_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="ingreso" EntitySet="ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cliente" Association="Self.fk_venta_cliente">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="venta" EntitySet="venta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

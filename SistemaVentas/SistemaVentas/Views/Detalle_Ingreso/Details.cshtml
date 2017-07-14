@@ -1,0 +1,59 @@
+﻿@model SistemaVentas.Models.detalle_ingreso
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>detalle_ingreso</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.articulo.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.articulo.codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ingreso.tipo_comprobante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ingreso.tipo_comprobante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_venta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_venta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iddetalle_ingreso }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
