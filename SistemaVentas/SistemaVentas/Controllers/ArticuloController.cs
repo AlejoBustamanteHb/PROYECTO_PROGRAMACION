@@ -89,10 +89,19 @@ namespace SistemaVentas.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="idarticulo,idcategoria,codigo,nombre,stock,descripcion,imagen,estado")] articulo articulo)
+        public ActionResult Edit([Bind(Include = "idarticulo,idcategoria,codigo,nombre,stock,descripcion,imagen,estado")] articulo articulo, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+
+                if (file != null)
+                {
+
+                    string archivo = (file.FileName).ToLower();
+                    file.SaveAs(Server.MapPath("~/Uploads/" + archivo));
+                    articulo.imagen = archivo;
+
+                }
 
                 db.Entry(articulo).State = EntityState.Modified;
                 db.SaveChanges();
