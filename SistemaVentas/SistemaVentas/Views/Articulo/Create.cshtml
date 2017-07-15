@@ -8,7 +8,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Articulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -60,8 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.imagen, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.imagen)
-                @Html.ValidationMessageFor(model => model.imagen)
+                <input type="file" name="file" value=" " />
             </div>
         </div>
 

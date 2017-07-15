@@ -21,11 +21,14 @@ namespace SistemaVentas
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/app.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/AdminLTE.min.css",
+                      "~/Content/_all-skins.min.css"));
         }
     }
 }

@@ -71,3 +71,4 @@ c:\users\soporte\documents\visual studio 2013\Projects\SistemaVentas\SistemaVent
 c:\users\soporte\documents\visual studio 2013\Projects\SistemaVentas\SistemaVentas\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 c:\users\soporte\documents\visual studio 2013\Projects\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.dll
 c:\users\soporte\documents\visual studio 2013\Projects\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.pdb
+c:\users\soporte\documents\visual studio 2013\Projects\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.csprojResolveAssemblyReference.cache
