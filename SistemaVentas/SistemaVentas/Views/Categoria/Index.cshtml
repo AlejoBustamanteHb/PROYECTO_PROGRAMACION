@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nuevo", "Create", new { @class = "btn btn-success" })
+    @*@Html.ActionLink("Nuevo", "Create", new { @class = "btn btn-success" })*@
+   <h2>Listado de Articulos <a href="/Categoria/Create" class="btn btn-success">Nuevo</a></h2>
     
 </p>
 <div class="row">
@@ -38,7 +38,7 @@
 
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.idcategoria }, new { @class = "btn btn-info" }) 
-                            @Html.ActionLink("Detalles", "Details", new { id = item.idcategoria }, new { @class = "btn btn-info" }) 
+                           @* @Html.ActionLink("Detalles", "Details", new { id = item.idcategoria }, new { @class = "btn btn-info" }) *@
                             @Html.ActionLink("Eliminar", "Delete", new { id = item.idcategoria }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>

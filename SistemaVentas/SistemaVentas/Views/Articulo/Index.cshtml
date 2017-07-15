@@ -8,7 +8,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+
+    <a href="/Articulo/Create" class="btn btn-success" >Nuevo</a>
 </p>
 <table class="table">
     <tr>
@@ -30,9 +31,7 @@
         <th>
             @Html.DisplayNameFor(model => model.imagen)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -57,13 +56,12 @@
             @Html.DisplayFor(modelItem => item.imagen)
             <img class="thumbnail" src="~/Uploads/@item.imagen" width="100" height="100" alt="" />
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idarticulo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idarticulo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idarticulo })
+            @Html.ActionLink("Edit", "Edit", new { id = item.idarticulo }, new { @class = "btn btn-info" }) 
+           @* @Html.ActionLink("Details", "Details", new { id = item.idarticulo }, new { @class = "btn btn-info" }) *@
+            @Html.ActionLink("Delete", "Delete", new { id = item.idarticulo }, new { @class = "btn btn-danger" })
+            
         </td>
     </tr>
 }
