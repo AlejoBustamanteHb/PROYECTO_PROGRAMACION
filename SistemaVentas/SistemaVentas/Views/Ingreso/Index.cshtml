@@ -5,66 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Lista de Ingresos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="/Ingreso/Create" class="btn btn-success">Nuevo</a>
 </p>
-<table class="table">
+<table class="table table-bordered" >
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idproveedor)
+            ID del Proveedor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tipo_comprobante)
+            Tipo del Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serie_comprobante)
+            Serie del Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.num_comprobante)
+            Numero del Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_hora)
+            Fecha y Hora del Ingreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.impuesto)
+            Impuesto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
+            Estado
         </th>
-        <th></th>
+        <th>Acciones</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idproveedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_comprobante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.serie_comprobante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.num_comprobante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_hora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.impuesto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idingreso }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idingreso }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idingreso })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idproveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo_comprobante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serie_comprobante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_comprobante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.impuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.idingreso }, new { @class = "btn btn-info" }) 
+                @* @Html.ActionLink("Details", "Details", new { id = item.idingreso }, new { @class = "btn btn-info" }) |*@
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.idingreso }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>

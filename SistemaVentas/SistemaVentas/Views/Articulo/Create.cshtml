@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+
 
 
 @using (Html.BeginForm("Create", "Articulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -13,79 +13,57 @@
     @Html.AntiForgeryToken()
     
     
-        <h4>articulo</h4>
+        <h4>Agregar Articulo</h4>
         <hr />
         @Html.ValidationSummary(true)
-    
+
     <div class="form-horizontal">
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.idcategoria, "idcategoria", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("idcategoria", null, String.Empty, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.idcategoria)
-                </div>
-            </div>
-        </div>
 
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.codigo, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.codigo, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.codigo)
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.nombre, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.nombre)
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.stock, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.stock, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.stock)
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.descripcion, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.descripcion, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.descripcion)
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.imagen, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="file" name="file" value=" " />
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-            <div class="form-group">
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.idcategoria, "ID de la Categoria", new { @class = "input-group-addon" })
+            @Html.DropDownList("idcategoria", null, String.Empty, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idcategoria)
+        </div><br /><br />
 
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.codigo, "Codigo del Producto", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.codigo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.codigo)
+        </div><br /><br />
 
-            </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.nombre, "Nombre del Producto", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div><br /><br />
+
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.stock, "Stock", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.stock, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.stock)
+        </div><br /><br />
+
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.descripcion, "Descripción del Producto", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.descripcion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.descripcion)
+        </div><br /><br />
+
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.imagen, "Imagen del Producto", new { @class = "input-group-addon" })
+            <input type="file" name="file" value=" " class="form-control" />
+        </div><br /><br />
+
+
+        <div class="input-group col-md-6">
+            <input type="submit" value="Agregar" class="btn btn-info" />
         </div>
-    </div>
+    </div><br /><br /><br />
 }
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="input-group col-md-6">
+    <a href="/Articulo/Index" class="btn btn-warning">Regresar</a>
 </div>
 
 @section Scripts {

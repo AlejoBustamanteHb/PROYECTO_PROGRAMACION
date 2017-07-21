@@ -12,43 +12,32 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="row">
-        <div class="col-log-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-horizontal">
 
                 <hr />
                 @Html.ValidationSummary(true)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.nombre, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.nombre)
-                    </div>
-                </div>
+                <div class="input-group col-md-6">
+                    @Html.LabelFor(model => model.nombre, "Nombre de la Categoria", new { @class = "input-group-addon" })
+                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.nombre)
+                </div><br /><br />
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.descripcion, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.descripcion, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.descripcion)
-                    </div>
-                </div>
+                <div class="input-group col-md-6">
+                    @Html.LabelFor(model => model.descripcion, "Descripción de la Categoria", new { @class = "input-group-addon" })
+                    @Html.TextBoxFor(model => model.descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.descripcion)
+                </div><br /><br />
 
-                
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </div>
+                <div class="input-group col-md-6">
+                    <input type="submit" value="Agregar" class="btn btn-success" id="btn_submit" />
+                </div><br /><br /><br />
             </div>
-        </div>
-    </div>
 }
 
-<div>
-    @Html.ActionLink("Regresar", "Index")
+<div class="input-group col-md-6">
+    <a href="/Categoria/Index" class="btn btn-warning">Regresar</a>
 </div>
 
 @section Scripts {

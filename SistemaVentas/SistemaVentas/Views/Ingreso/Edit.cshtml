@@ -5,85 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ingreso</h4>
+        <h4>Editar el Ingreso</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.idingreso)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.idproveedor, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.idproveedor)
-                @Html.ValidationMessageFor(model => model.idproveedor)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.idproveedor, "ID del Proveedor", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.idproveedor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idproveedor)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo_comprobante, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_comprobante)
-                @Html.ValidationMessageFor(model => model.tipo_comprobante)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.tipo_comprobante, "Tipo de Comprobante", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.tipo_comprobante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipo_comprobante)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.serie_comprobante, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.serie_comprobante)
-                @Html.ValidationMessageFor(model => model.serie_comprobante)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.serie_comprobante, "Serie de Comprobante", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.serie_comprobante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.serie_comprobante)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.num_comprobante, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.num_comprobante)
-                @Html.ValidationMessageFor(model => model.num_comprobante)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.num_comprobante, "Numero de Comprobante", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.num_comprobante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.num_comprobante)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.fecha_hora, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_hora)
-                @Html.ValidationMessageFor(model => model.fecha_hora)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.fecha_hora, "Fecha y Hora del Ingreso", new { @class = "input-group-addon" })
+            <input type="datetime-local" name="fecha_hora" class="form-control" />
+            @Html.ValidationMessageFor(model => model.fecha_hora)
+        </div><br /><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.impuesto, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.impuesto)
-                @Html.ValidationMessageFor(model => model.impuesto)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.impuesto, "Impuesto", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.impuesto, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.impuesto)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.estado, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.estado)
-                @Html.ValidationMessageFor(model => model.estado)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.estado, "Estado del Ingreso", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.estado, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.estado)
+        </div><br /><br /><br />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            <input type="submit" value="Agregar" class="btn btn-success" id="btn_submit" />
+        </div><br /><br /><br />
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="form-group col-md-6">
+    <a href="/Ingreso/Index" class="btn btn-warning">Regresar</a>
 </div>
 
 @section Scripts {

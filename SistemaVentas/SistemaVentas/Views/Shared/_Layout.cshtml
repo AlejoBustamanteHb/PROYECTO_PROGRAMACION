@@ -37,6 +37,9 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <!-- User Account: style can be found in dropdown.less -->
+                        <li>
+                            @Html.Partial("_LoginPartial")
+                        </li>
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <small class="bg-red">Online</small>
@@ -61,7 +64,6 @@
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
 
@@ -95,8 +97,8 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                            <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                            <li><a href="/Ingreso/Index"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Proveedores</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -106,19 +108,8 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                            <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Acceso</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-
+                            <li><a href="/Venta/Index"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Clientes</a></li>
                         </ul>
                     </li>
                     <li>
@@ -132,6 +123,18 @@
                             <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
                             <small class="label pull-right bg-yellow">IT</small>
                         </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Admin</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Persona/Index"><i class="fa fa-circle-o"></i> Personas Registradas</a></li>
+                            <li><a href="/Detalle_Venta/Index"><i class="fa fa-circle-o"></i> Detalles de Ventas</a></li>
+                            <li><a href="/Detalle_Ingreso/Index"><i class="fa fa-circle-o"></i> Detalles de Ingresos</a></li>
+                        </ul>
                     </li>
 
                 </ul>

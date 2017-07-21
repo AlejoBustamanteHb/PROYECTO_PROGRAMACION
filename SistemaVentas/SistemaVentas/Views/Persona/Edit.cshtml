@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+
 
 
 @using (Html.BeginForm())
@@ -13,77 +13,62 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>persona</h4>
+        <h4>Editar datos de Persona</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.idpersona)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo_persona, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_persona)
-                @Html.ValidationMessageFor(model => model.tipo_persona)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.tipo_persona, "Tipo de Persona", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.tipo_persona, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipo_persona)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nombre, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombre)
-                @Html.ValidationMessageFor(model => model.nombre)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.nombre, "Nombre", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo_documento, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_documento)
-                @Html.ValidationMessageFor(model => model.tipo_documento)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.tipo_documento, "Tipo de Documento", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.tipo_documento, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipo_documento)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.num_documento, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.num_documento)
-                @Html.ValidationMessageFor(model => model.num_documento)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.num_documento, "Numero de Documento", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.num_documento, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.num_documento)
+        </div><br /><br />
+        
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.direccion, "Dirección", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.direccion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.direccion)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.direccion, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.direccion)
-                @Html.ValidationMessageFor(model => model.direccion)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.telefono, "Telefono", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.telefono, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.telefono)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.telefono, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.telefono)
-                @Html.ValidationMessageFor(model => model.telefono)
-            </div>
-        </div>
+        <div class="input-group col-md-6">
+            @Html.LabelFor(model => model.email, "Correo Electronico", new { @class = "input-group-addon" })
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.email)
+        </div><br /><br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email)
-                @Html.ValidationMessageFor(model => model.email)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        
+        <div class="input-group col-md-6">
+            <input type="submit" value="Guardar" class="btn btn-success" id="btn_submit" />
+        </div><br /><br /><br />
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="form-group col-md-6">
+    <a href="/Persona/Index" class="btn btn-warning">Regresar</a>
 </div>
 
 @section Scripts {

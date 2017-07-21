@@ -5,29 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado de Detalles de la Venta</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="/Detalle_Venta/Create" class="btn btn-success">Nuevo</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.articulo.codigo)
+            Codigo del Articulo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.venta.tipo_comprobante)
+            Tipo de Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cantidad)
+            Cantidad
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.precio_venta)
+            Precio Venta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descuento)
+            Descuento
         </th>
-        <th></th>
+        <th>Accion</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.descuento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.iddetalle_venta }) |
-            @Html.ActionLink("Details", "Details", new { id=item.iddetalle_venta }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.iddetalle_venta })
+            @Html.ActionLink("Editar", "Edit", new { id = item.iddetalle_venta }, new { @class = "btn btn-info" })
+           @* @Html.ActionLink("Details", "Details", new { id=item.iddetalle_venta }) |*@
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.iddetalle_venta }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

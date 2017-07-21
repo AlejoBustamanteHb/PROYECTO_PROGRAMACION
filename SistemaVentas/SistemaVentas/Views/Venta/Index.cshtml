@@ -5,38 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Registro de Ventas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="/Venta/Create" class="btn btn-success">Nuevo</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idcliente)
+            ID del Cliente
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tipo_comprobante)
+            Tipo de Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serie_comprobante)
+            Serie de Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.num_comprobante)
+            Numero de Comprobante
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_hora)
+            Fecha y Hora de la Venta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.impuesto)
+            Impuesto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.total_venta)
+            Valor Total de la Venta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
+            Estado de la Venta
         </th>
-        <th></th>
+        <th>Accion</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -66,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idventa }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idventa }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idventa })
+            @Html.ActionLink("Editar", "Edit", new { id = item.idventa }, new { @class = "btn btn-info" }) 
+           @* @Html.ActionLink("Details", "Details", new { id=item.idventa }) |*@
+            @Html.ActionLink("Reembolsar", "Delete", new { id = item.idventa }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

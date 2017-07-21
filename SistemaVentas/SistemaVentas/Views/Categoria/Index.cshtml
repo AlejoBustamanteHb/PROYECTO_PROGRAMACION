@@ -8,8 +8,8 @@
 
 <p>
     @*@Html.ActionLink("Nuevo", "Create", new { @class = "btn btn-success" })*@
-   <h2>Listado de Articulos <a href="/Categoria/Create" class="btn btn-success">Nuevo</a></h2>
-    
+   <h2>Listado de Categorias</h2>
+    <p><a href="/Categoria/Create" class="btn btn-success">Nuevo</a></p>
 </p>
 <div class="row">
     <div class="col-log-12 col-md-12 col-sm-12 col-xs-12">
@@ -17,13 +17,13 @@
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.nombre)
+                        Nombre de la Categoria
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.descripcion)
+                        Descripción de la Categoria
                     </th>
 
-                    <th></th>
+                    <th>Acción</th>
                 </tr>
 
                 @foreach (var item in Model)

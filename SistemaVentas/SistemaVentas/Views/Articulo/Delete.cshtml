@@ -5,77 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Esta seguro que quiere borrar el Articulo?</h3>
 <div>
-    <h4>articulo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.categoria.nombre)
-        </dt>
+    <table class="table table-bordered">
+        <tr class="warning">
+            <th>Nombre de la Categoria</th>
+            <th>Codigo del Producto</th>
+            <th>Nombre del Producto</th>
+            <th>Unidades disponibles del Producto (Stock)</th>
+            <th>Descripción del Producto</th>
+            <th>Imagen del Producto</th>
+        </tr>
+        <tr class="success">
+            <td><p class="text-center">@Html.DisplayFor(model => model.categoria.nombre)</p></td>
+            <td><p class="text-center">@Html.DisplayFor(model => model.codigo)</p></td>
+            <td><p class="text-center">@Html.DisplayFor(model => model.nombre)</p></td>
+            <td><p class="text-center">@Html.DisplayFor(model => model.stock)</p></td>
+            <td><p class="text-center">@Html.DisplayFor(model => model.descripcion)</p></td>
+            <td><img class="thumbnail" src="~/Uploads/@Html.DisplayFor(model => model.imagen)" alt="Imagen del Producto" width="200" height="150" /></td>
+        </tr>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.categoria.nombre)
-        </dd>
+        <hr />
+         @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.codigo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.stock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.stock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imagen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estado)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+                <a href="/Articulo/Index" class="btn btn-success">Cancelar</a>
+            </div>
+        }
 </div>

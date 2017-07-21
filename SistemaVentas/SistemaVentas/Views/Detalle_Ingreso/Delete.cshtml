@@ -5,61 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Esta seguro de que se desea eliminar el Detalle del Ingreso?</h3>
 <div>
-    <h4>detalle_ingreso</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.articulo.codigo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.articulo.codigo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ingreso.tipo_comprobante)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ingreso.tipo_comprobante)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.precio_compra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.precio_compra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.precio_venta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.precio_venta)
-        </dd>
-
-    </dl>
+    <table class="table table-condensed">
+        <tr class="warning">
+            <th>Id del Articulo</th>
+            <th>Tipo de Comprobante</th>
+            <th>Cantidad</th>
+            <th>Precio de la Compra</th>
+            <th>Precio de la Venta</th>
+        </tr>
+        <tr class="success">
+            <td>@Html.DisplayFor(model => model.articulo.codigo)</td>
+            <td>@Html.DisplayFor(model => model.ingreso.tipo_comprobante)</td>
+            <td>@Html.DisplayFor(model => model.cantidad)</td>
+            <td>@Html.DisplayFor(model => model.precio_compra)</td>
+            <td>@Html.DisplayFor(model => model.precio_venta)</td>
+        </tr>
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+             <input type="submit" value="Eliminar" class="btn btn-danger" />
+             <a href="/Detalle_Ingreso/Index" class="btn btn-success">Cancelar</a>
         </div>
     }
 </div>
